@@ -1,0 +1,35 @@
+<header class="header-container">
+  <!-- Linkes Drittel: Hamburger-Menü und Titel -->
+  <div class="left-section">
+    <button mat-icon-button aria-label="Menü öffnen">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="title">ToolHub</span>
+  </div>
+
+  <!-- Mittleres Drittel: Suchfeld -->
+  <div class="center-section">
+    <form class="search-form">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>
+          Wert eingeben oder Werkzeug suchen (<span class="keyboard-shortcut"><kbd>Strg</kbd> + <kbd>K</kbd></span>)
+        </mat-label>
+        <input #searchInput matInput type="text" [formControl]="searchControl" [matAutocomplete]="auto"/>
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          @for (option of suggestions; track option.route) {
+            <mat-option [value]="option.route" [matTooltip]="option.display" (onSelectionChange)="navigateTo(option.route)">
+              {{ option.display }}
+            </mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <!-- Rechtes Drittel: Star-Icon -->
+  <div class="right-section">
+    <button mat-icon-button aria-label="Favoriten">
+      <mat-icon>star</mat-icon>
+    </button>
+  </div>
+</header>
