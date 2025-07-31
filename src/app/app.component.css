@@ -6,11 +6,30 @@
 }
 
 app-header {
-  flex-shrink: 0;
   width: 100%;
+  z-index: 101;
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 60px;
+  transition: margin-left 0.3s ease-in-out;
+  overflow: auto;
+}
+
+.main-content.sidenav-expanded {
+  margin-left: 240px;
 }
 
 router-outlet {
-  flex: 1;
-  overflow: auto;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-content, .main-content.sidenav-expanded {
+    margin-left: 0;
+  }
 }

@@ -4,6 +4,7 @@ export interface ToolEntry {
     description: string;
     route: string;
     tags: string[];
+    icon: string;
     }
 
 export const TOOL_REGISTRY: ToolEntry[] = [
@@ -12,6 +13,7 @@ export const TOOL_REGISTRY: ToolEntry[] = [
         name: 'Einheiten-Konverter',
         description: 'Konvertiert Einheiten wie Längen, Gewichte und Volumen.',
         route: '/tools/converter',
+        icon: 'swap_horiz',
         tags: ['konverter', 'konvertierung', 'einheiten']
     },
     {
@@ -19,6 +21,7 @@ export const TOOL_REGISTRY: ToolEntry[] = [
         name: 'Pizza-Tool',
         description: 'Berechnet die Größe einer Pizza und den Preis pro Quadratzentimeter.',
         route: '/tools/pizza',
+        icon: 'local_pizza',
         tags: ['pizza', 'verhältnis', 'größe', 'preis']
     }
 ];

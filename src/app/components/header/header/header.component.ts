@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, inject, ViewChild, ElementRef, HostListener, Output, EventEmitter } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SearchService, SearchResult } from '../../../core/search/search.service';
@@ -28,11 +28,16 @@ export class HeaderComponent {
   constructor(private searchService: SearchService) { }
   private router = inject(Router);
 
+  @Output() toggleSidenav = new EventEmitter<void>();
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
 
   searchControl = new FormControl<SearchResult | null>(null);
 
   suggestions: SearchResult[] = [];
+
+  onMenuClick() {
+    this.toggleSidenav.emit();
+  }
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {

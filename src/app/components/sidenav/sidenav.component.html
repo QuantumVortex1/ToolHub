@@ -1,0 +1,20 @@
+<nav class="sidenav" [class.expanded]="isExpanded">
+  <div class="nav-items">
+    <div class="nav-item" 
+        *ngFor="let tool of tools" 
+        (click)="navigateTo(tool.route)"
+        [matTooltip]="!isExpanded ? tool.name : ''"
+        matTooltipPosition="right"
+        [class.active]="activeRoute === tool.route"
+        >
+      
+      <button mat-icon-button class="nav-button">
+        <mat-icon>{{ tool.icon }}</mat-icon>
+      </button>
+
+      <span class="nav-label" *ngIf="isExpanded">
+        {{ tool.name }}
+      </span>
+    </div>
+  </div>
+</nav>

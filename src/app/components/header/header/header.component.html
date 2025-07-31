@@ -1,13 +1,11 @@
 <header class="header-container">
-  <!-- Linkes Drittel: Hamburger-Menü und Titel -->
   <div class="left-section">
-    <button mat-icon-button aria-label="Menü öffnen">
+    <button mat-icon-button aria-label="Menü öffnen" (click)="onMenuClick()">
       <mat-icon>menu</mat-icon>
     </button>
     <span class="title">ToolHub</span>
   </div>
 
-  <!-- Mittleres Drittel: Suchfeld -->
   <div class="center-section">
     <form class="search-form">
       <mat-form-field appearance="outline" class="search-field">
@@ -26,7 +24,6 @@
     </form>
   </div>
 
-  <!-- Rechtes Drittel: Star-Icon -->
   <div class="right-section">
     <button mat-icon-button aria-label="Favoriten">
       <mat-icon>star</mat-icon>
