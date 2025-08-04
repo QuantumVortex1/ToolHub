@@ -16,6 +16,7 @@ app-header {
   margin-left: 60px;
   transition: margin-left 0.3s ease-in-out;
   overflow: auto;
+  position: relative;
 }
 
 .main-content.sidenav-expanded {
@@ -24,8 +25,8 @@ app-header {
 
 router-outlet {
   display: block;
-  height: 100%;
-  width: 100%;
+  height: 0;
+  width: 0;
 }
 
 @media (max-width: 768px) {

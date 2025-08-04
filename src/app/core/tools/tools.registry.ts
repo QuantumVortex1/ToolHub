@@ -9,6 +9,14 @@ export interface ToolEntry {
 
 export const TOOL_REGISTRY: ToolEntry[] = [
     {
+        id: 'home',
+        name: 'Startseite',
+        description: 'Zurück zur Startseite von ToolHub.',
+        route: '/',
+        icon: 'home',
+        tags: ['home', 'start', 'startseite']
+    },
+    {
         id: 'converter',
         name: 'Einheiten-Konverter',
         description: 'Konvertiert Einheiten wie Längen, Gewichte und Volumen.',

@@ -32,7 +32,15 @@ export class SearchService {
           display: tool.name,
           route: tool.route
         });
-      } else if (tool.description.toLowerCase().includes(query)) {
+      } 
+      else if (tool.tags.some(tag => tag.toLowerCase().includes(query))) {
+        results.push({
+          type: 'tool',
+          display: tool.name,
+          route: tool.route
+        });
+      }
+      else if (tool.description.toLowerCase().includes(query)) {
         descResults.push({
           type: 'tool',
           display: tool.name,

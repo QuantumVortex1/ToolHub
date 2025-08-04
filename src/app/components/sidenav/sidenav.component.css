@@ -22,6 +22,7 @@
   flex: 1;
   padding: 2px 0;
   overflow-y: auto;
+  overflow-x: hidden;
   background-color: #f8f9fa;
 }
 
@@ -34,14 +35,11 @@
   transition: background-color 0.2s ease;
   min-height: 36px;
   border-radius: 4px;
-}
-
-.sidenav:not(.expanded) .nav-item {
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 8px;
 }
 
 .sidenav.expanded .nav-item {
-  justify-content: flex-start;
   padding-left: 8px;
 }
 
@@ -73,13 +71,15 @@
 }
 
 .nav-label {
-  margin-left: 12px;
   font-size: 14px;
   font-weight: 500;
   color: #333;
   white-space: nowrap;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
 .nav-item.active {
@@ -93,6 +93,9 @@
 
 .sidenav.expanded .nav-label {
   opacity: 1;
+  width: 160px;
+  margin-left: 12px;
+  transition: all 0.3s ease-in-out;
 }
 
 @media (max-width: 768px) {
