@@ -1,1 +1,119 @@
-<p>pizza works!</p>
+<div class="component-wrapper">
+  <h2>Pizza-Tool</h2>
+  
+  <div class="crust-settings">
+    <mat-form-field appearance="outline" class="crust-field small-input">
+      <mat-label>Randdicke (cm)</mat-label>
+      <input matInput type="number" [(ngModel)]="crustThickness" min="0" step="0.5" placeholder="2.0" (ngModelChange)="onCrustThicknessChange()">
+    </mat-form-field>
+    
+    <div class="toggle-section">
+      <mat-button-toggle-group [(ngModel)]="showAreaPerEuro" appearance="standard">
+        <mat-button-toggle [value]="false">Preis pro Fläche (€/cm²)</mat-button-toggle>
+        <mat-button-toggle [value]="true">Fläche pro Euro (cm²/€)</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+
+  <div class="pizza-table-container">
+    <table mat-table [dataSource]="dataSource" matSort class="pizza-table">
+      
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Bezeichnung</th>
+        <td mat-cell *matCellDef="let pizza; let i = index">
+          <mat-form-field appearance="outline" class="compact-field small-input">
+            <input matInput [(ngModel)]="pizza.name" placeholder="Pizza {{i + 1}}" (ngModelChange)="onPizzaChange(pizza)">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Art</th>
+        <td mat-cell *matCellDef="let pizza">
+          <mat-form-field appearance="outline" class="compact-field small-input">
+            <mat-select [(ngModel)]="pizza.type" (selectionChange)="calculatePizza(pizza)">
+              <mat-option value="round">Rund</mat-option>
+              <mat-option value="rectangular">Eckig</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dimensions">
+        <th mat-header-cell *matHeaderCellDef>Größe</th>
+        <td mat-cell *matCellDef="let pizza">
+          <div class="dimensions-input">
+            <mat-form-field appearance="outline" class="compact-field small-input" *ngIf="pizza.type === 'round'">
+              <mat-label>Durchmesser (cm)</mat-label>
+              <input matInput type="number" [(ngModel)]="pizza.diameter" (ngModelChange)="calculatePizza(pizza)" min="1" step="0.5">
+            </mat-form-field>
+            <div class="rectangular-inputs" *ngIf="pizza.type === 'rectangular'">
+              <mat-form-field appearance="outline" class="compact-field small-input">
+                <mat-label>Länge</mat-label>
+                <input matInput type="number" [(ngModel)]="pizza.length" (ngModelChange)="calculatePizza(pizza)" min="1" step="0.5">
+              </mat-form-field>
+              <span class="separator">×</span>
+              <mat-form-field appearance="outline" class="compact-field small-input">
+                <mat-label>Breite</mat-label>
+                <input matInput type="number" [(ngModel)]="pizza.width" (ngModelChange)="calculatePizza(pizza)" min="1" step="0.5">
+              </mat-form-field>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Preis (€)</th>
+        <td mat-cell *matCellDef="let pizza">
+          <mat-form-field appearance="outline" class="compact-field small-input">
+            <input matInput type="number" [(ngModel)]="pizza.price" (ngModelChange)="onPizzaChange(pizza)" min="0" step="0.1">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="totalArea">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="calculated-header">Fläche (cm²)</th>
+        <td mat-cell *matCellDef="let pizza" class="calculated-cell">
+          {{pizza.totalArea | number:'1.1-1'}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="usableArea">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="calculated-header">Fläche ohne Rand (cm²)</th>
+        <td mat-cell *matCellDef="let pizza" class="calculated-cell">
+          {{pizza.usableArea | number:'1.1-1'}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="crustPercentage">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="calculated-header">Anteil Rand (%)</th>
+        <td mat-cell *matCellDef="let pizza" class="calculated-cell">
+          {{pizza.crustPercentage | number:'1.1-1'}}%
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="priceRatioUsable">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="calculated-header">
+          {{showAreaPerEuro ? 'Fläche/€ ohne Rand (cm²/€)' : 'Preis/Fläche ohne Rand (€/cm²)'}}
+        </th>
+        <td mat-cell *matCellDef="let pizza" class="calculated-cell">
+          {{showAreaPerEuro ? (pizza.usableAreaPerEuro | number:'1.1-1') : (pizza.pricePerUsableArea | number:'1.4-4')}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="priceRatioTotal">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="highlight-header calculated-header">
+          {{showAreaPerEuro ? 'Fläche/€ mit Rand (cm²/€)' : 'Preis/Fläche mit Rand (€/cm²)'}}
+        </th>
+        <td mat-cell *matCellDef="let pizza" class="calculated-cell highlight-cell">
+          {{showAreaPerEuro ? (pizza.totalAreaPerEuro | number:'1.1-1') : (pizza.pricePerTotalArea | number:'1.4-4')}}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+          [class.empty-row]="!isPizzaComplete(row)"
+          [class.best-pizza-row]="isBestPizza(row)"></tr>
+    </table>
+  </div>
+</div>

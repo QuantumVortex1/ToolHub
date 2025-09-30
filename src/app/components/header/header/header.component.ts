@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
     MatButtonModule
   ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css', '../../../../styles.css']
 })
 export class HeaderComponent {
   constructor(private searchService: SearchService) { }
