@@ -31,5 +31,13 @@ export const TOOL_REGISTRY: ToolEntry[] = [
         route: '/tools/pizza',
         icon: 'local_pizza',
         tags: ['pizza', 'verhältnis', 'größe', 'preis']
+    },
+    {
+        id: 'alcohol-level',
+        name: 'Promille-Rechner',
+        description: 'Schätzt den Blutalkoholspiegel basierend auf Getränken, Gewicht und Geschlecht.',
+        route: '/tools/alcohol-level',
+        icon: 'sports_bar',
+        tags: ['alkohol', 'promille', 'blutalkoholspiegel', 'bier', 'wein', 'schnaps']
     }
 ];

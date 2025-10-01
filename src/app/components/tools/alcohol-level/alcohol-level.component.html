@@ -1,0 +1,108 @@
+<div class="component-wrapper">
+    <h2>Promille-Rechner</h2>
+
+    <div class="warning-box">
+        <span>Alkoholkonsum ist gefährlich und kann zu Sucht führen. Wenn Sie Hilfe benötigen, suchen Sie bitte
+            professionelle Unterstützung. Fahren Sie nicht unter Alkoholeinfluss.</span>
+    </div>
+    <div class="info-box">
+        <span>Die Berechnung des Blutalkoholspiegels (BAC) basiert auf der Widmark-Formel und berücksichtigt
+            verschiedene Faktoren wie Körpergewicht, Geschlecht, konsumierte Alkoholmenge und Zeit seit dem
+            Konsum. Diese Berechnung liefert nur eine Schätzung und ersetzt keine professionelle medizinische
+            Beratung.</span>
+    </div>
+
+    <div class="personal-values">
+        <span>Persönliche Werte</span>
+        <div class="personal-inputs">
+
+            <mat-form-field appearance="outline" class="personal-field small-input">
+                <mat-label>Körpergewicht (kg)</mat-label>
+                <input matInput type="number" [(ngModel)]="weight" min="1" step="0.5" placeholder="70"
+                    (ngModelChange)="onPersonalDataChange()">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="personal-field small-input">
+                <mat-label>Geschlecht</mat-label>
+                <mat-select [(ngModel)]="gender" (ngModelChange)="onPersonalDataChange()">
+                    <mat-option value="other">Divers</mat-option>
+                    <mat-option value="female">Weiblich</mat-option>
+                    <mat-option value="male">Männlich</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="drinks-table-container">
+        <table mat-table [dataSource]="dataSource" class="drinks-table">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Bezeichnung</th>
+                <td mat-cell *matCellDef="let drink; let i = index">
+                    <mat-form-field appearance="outline" class="compact-field small-input">
+                        <input matInput [(ngModel)]="drink.name" placeholder="Getränk {{i + 1}}" (ngModelChange)="onDrinkChange(drink)">
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="volume">
+                <th mat-header-cell *matHeaderCellDef>Menge (ml)</th>
+                <td mat-cell *matCellDef="let drink">
+                    <mat-form-field appearance="outline" class="compact-field small-input">
+                        <input matInput type="number" [(ngModel)]="drink.volume" (ngModelChange)="calculateDrink(drink)" min="0" step="10">
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="alcoholPercentage">
+                <th mat-header-cell *matHeaderCellDef>Alkohol (%)</th>
+                <td mat-cell *matCellDef="let drink">
+                    <mat-form-field appearance="outline" class="compact-field small-input">
+                        <input matInput type="number" [(ngModel)]="drink.alcoholPercentage" (ngModelChange)="calculateDrink(drink)" min="0" max="100" step="0.1">
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="time">
+                <th mat-header-cell *matHeaderCellDef>Uhrzeit</th>
+                <td mat-cell *matCellDef="let drink">
+                    <mat-form-field appearance="outline" class="compact-field small-input">
+                        <input matInput type="time" [(ngModel)]="drink.time" (ngModelChange)="onDrinkChange(drink)">
+                    </mat-form-field>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="alcoholGrams">
+                <th mat-header-cell *matHeaderCellDef class="calculated-header">Alkohol (g)</th>
+                <td mat-cell *matCellDef="let drink" class="calculated-cell">
+                    {{drink.alcoholGrams | number:'1.1-1'}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="bacIncrease">
+                <th mat-header-cell *matHeaderCellDef class="calculated-header highlight-header">BAC-Anstieg (‰)</th>
+                <td mat-cell *matCellDef="let drink" class="calculated-cell highlight-cell">
+                    {{drink.bacIncrease | number:'1.2-2'}}
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+                [class.empty-row]="!isDrinkComplete(row)"></tr>
+        </table>
+    </div>
+
+    <div class="current-bac">
+        <div class="bac-display">
+            <h3>Geschätzter aktueller Alkoholspiegel</h3>
+            <div class="bac-value" [ngClass]="{'warning': currentBAC >= 0.5, 'danger': currentBAC >= 1.1}">
+                {{currentBAC | number:'1.2-2'}} ‰
+            </div>
+            <div class="bac-info">
+                <small>Berechnung basiert auf aktueller Uhrzeit und angenommenem Alkoholabbau von 0,15 ‰/h</small>
+            </div>
+            <div class="reset-section">
+                <button mat-stroked-button color="warn" (click)="resetData()">
+                    <mat-icon>refresh</mat-icon>
+                    Alle Daten zurücksetzen
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>

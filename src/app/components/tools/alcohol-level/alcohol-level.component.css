@@ -1,0 +1,165 @@
+.warning-box {
+    display: flex;
+    align-items: center;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.personal-values {
+    margin-bottom: 32px;
+    padding: 16px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #1976d2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.personal-inputs {
+    display: flex;
+    gap: 8px;
+}
+
+.personal-inputs mat-form-field ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.drinks-table-container {
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.drinks-table {
+  width: 100%;
+  background-color: white;
+}
+
+.drinks-table th {
+  background-color: #fafafa;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+  padding: 4px;
+}
+
+.drinks-table td {
+  padding: 4px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.compact-field {
+  max-width: 100px;
+}
+
+.calculated-cell {
+  text-align: right;
+  background-color: #f8f9fa;
+  font-weight: 500;
+}
+
+.calculated-header {
+  text-align: right;
+}
+
+.highlight-header {
+  font-weight: 600 !important;
+  background-color: #e3f2fd !important;
+}
+
+.highlight-cell {
+  font-weight: 600 !important;
+  background-color: #e3f2fd !important;
+}
+
+.empty-row {
+  opacity: 0.4;
+}
+
+.empty-row:hover {
+  opacity: 0.6;
+}
+
+.empty-row td {
+  color: #999;
+}
+
+.current-bac {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  border-left: 4px solid #1976d2;
+}
+
+.bac-display h3 {
+  margin: 0 0 16px 0;
+  color: #333;
+}
+
+.bac-value {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 8px;
+}
+
+.bac-value.warning {
+  color: #ff9800;
+}
+
+.bac-value.danger {
+  color: #f44336;
+}
+
+.bac-info {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.reset-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.reset-section button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .drinks-table-container {
+    font-size: 12px;
+  }
+  
+  .compact-field {
+    max-width: 80px;
+  }
+  
+  .drinks-table th,
+  .drinks-table td {
+    padding: 8px 4px;
+  }
+  
+  .personal-inputs {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .bac-value {
+    font-size: 2em;
+  }
+}
