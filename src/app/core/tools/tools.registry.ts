@@ -16,14 +16,14 @@ export const TOOL_REGISTRY: ToolEntry[] = [
         icon: 'home',
         tags: ['home', 'start', 'startseite']
     },
-    {
-        id: 'converter',
-        name: 'Einheiten-Konverter',
-        description: 'Konvertiert Einheiten wie Längen, Gewichte und Volumen.',
-        route: '/tools/converter',
-        icon: 'swap_horiz',
-        tags: ['konverter', 'konvertierung', 'einheiten']
-    },
+    // {
+    //     id: 'converter',
+    //     name: 'Einheiten-Konverter',
+    //     description: 'Konvertiert Einheiten wie Längen, Gewichte und Volumen.',
+    //     route: '/tools/converter',
+    //     icon: 'swap_horiz',
+    //     tags: ['konverter', 'konvertierung', 'einheiten']
+    // },
     {
         id: 'pizza-tool',
         name: 'Pizza-Tool',

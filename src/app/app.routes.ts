@@ -6,7 +6,7 @@ import { AlcoholLevelComponent } from './components/tools/alcohol-level/alcohol-
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },
-    { path: 'tools/converter', component: ConverterComponent },
+    // { path: 'tools/converter', component: ConverterComponent },
     { path: 'tools/pizza', component: PizzaComponent },
     { path: 'tools/alcohol-level', component: AlcoholLevelComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }
