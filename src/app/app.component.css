@@ -17,6 +17,8 @@ app-header {
   transition: margin-left 0.3s ease-in-out;
   overflow: auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-content.sidenav-expanded {
@@ -29,8 +31,20 @@ router-outlet {
   width: 0;
 }
 
+.main-content>*:not(app-footer, router-outlet) {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+app-footer {
+  margin-top: auto;
+}
+
 @media (max-width: 768px) {
-  .main-content, .main-content.sidenav-expanded {
+  .main-content,
+  .main-content.sidenav-expanded {
     margin-left: 0;
   }
 }
