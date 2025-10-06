@@ -8,6 +8,7 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { c } from "../../../../../node_modules/@angular/cdk/a11y-module.d-DBHGyKoh";
 
 export interface Drink {
   name: string;
@@ -31,7 +32,7 @@ export interface Drink {
     MatInputModule,
     MatSelectModule,
     MatButtonModule
-  ],
+],
   templateUrl: './alcohol-level.component.html',
   styleUrl: './alcohol-level.component.css'
 })
@@ -42,6 +43,9 @@ export class AlcoholLevelComponent implements OnInit {
   drinks: Drink[] = [];
   dataSource = new MatTableDataSource<Drink>();
   currentBAC: number = 0;
+
+  showWarning: boolean = true;
+  showInfo: boolean = true;
 
   displayedColumns: string[] = [
     'name', 'volume', 'alcoholPercentage', 'time',
