@@ -1,5 +1,39 @@
 <div class="component-wrapper">
-    <div class="info-box">
-        <span>Willkommen bei ToolHub! Entdecken Sie eine Sammlung nützlicher Werkzeuge für verschiedene Berechnungen und Aufgaben. Die Startseite ist noch in Arbeit. Nutzen Sie die Suchfunktion oder die Seitenleiste, um ein Tool auszuwählen.</span>
-    </div>
+    <h2>Willkommen bei ToolHub</h2>
+    
+    <section class="favorites-section">
+        <h3>Favoriten</h3>
+        <div class="tool-cards-grid" *ngIf="favourites.length > 0; else noFavorites">
+            <div class="tool-card" *ngFor="let tool of favourites" (click)="navigateTo(tool.route)">
+                <div class="tool-card-icon">
+                    <mat-icon>{{ tool.icon }}</mat-icon>
+                </div>
+                <div class="tool-card-content">
+                    <h4 class="tool-card-title">{{ tool.name }}</h4>
+                    <p class="tool-card-description">{{ tool.description }}</p>
+                </div>
+            </div>
+        </div>
+        <ng-template #noFavorites>
+            <div class="no-favorites">
+                <mat-icon class="no-favorites-icon">star_outline</mat-icon>
+                <p>Stay tuned for updates!</p>
+            </div>
+        </ng-template>
+    </section>
+
+    <section class="all-tools-section">
+        <h3>Verfügbare Werkzeuge</h3>
+        <div class="tool-cards-grid">
+            <div class="tool-card" *ngFor="let tool of availableTools" (click)="navigateTo(tool.route)">
+                <div class="tool-card-icon">
+                    <mat-icon>{{ tool.icon }}</mat-icon>
+                </div>
+                <div class="tool-card-content">
+                    <h4 class="tool-card-title">{{ tool.name }}</h4>
+                    <p class="tool-card-description">{{ tool.description }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

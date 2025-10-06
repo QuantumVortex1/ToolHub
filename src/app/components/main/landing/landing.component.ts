@@ -1,12 +1,26 @@
 import { Component } from '@angular/core';
-import { SearchService } from '../../../core/search/search.service';
+import { TOOL_REGISTRY, ToolEntry } from '../../../core/tools/tools.registry';
+import { CommonModule } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
-  imports: [],
+  imports: [CommonModule, MatIcon],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
 })
 export class LandingComponent {
-  constructor() {}
+  constructor(private router: Router) { }
+
+  toolRegistry: ToolEntry[] = TOOL_REGISTRY;
+  favourites: any[] = [];
+  
+  get availableTools(): ToolEntry[] {
+    return this.toolRegistry.filter(tool => tool.id !== 'home');
+  }
+
+  navigateTo(route: string) {
+    this.router.navigate([route]);
+  }
 }
