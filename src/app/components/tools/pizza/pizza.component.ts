@@ -42,7 +42,7 @@ export interface Pizza {
     MatButtonToggleModule
   ],
   templateUrl: './pizza.component.html',
-  styleUrls: ['./pizza.component.css', '../../../../styles.css']
+  styleUrl: './pizza.component.css'
 })
 export class PizzaComponent implements OnInit {
   

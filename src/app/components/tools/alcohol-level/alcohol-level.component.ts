@@ -33,7 +33,7 @@ export interface Drink {
     MatButtonModule
   ],
   templateUrl: './alcohol-level.component.html',
-  styleUrls: ['./alcohol-level.component.css', '../../../../styles.css']
+  styleUrl: './alcohol-level.component.css'
 })
 export class AlcoholLevelComponent implements OnInit {
   weight: number = 70;

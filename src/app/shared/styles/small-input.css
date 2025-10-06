@@ -1,0 +1,41 @@
+.small-input {
+    --mat-form-field-container-height: 2.5rem;
+    --mat-form-field-container-vertical-padding: 0.25rem;
+    --mat-form-field-container-text-size: 14px;
+    --mdc-outlined-text-field-label-text-size : 14px;
+}
+
+.small-input input {
+  line-height: 1.5;
+}
+
+.small-input .mat-mdc-text-field-wrapper {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.small-input .mat-mdc-form-field-infix {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.small-input mat-label {
+  color: rgba(0, 0, 0, 0.6);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.small-input .mdc-floating-label {
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.2s ease;
+}
+
+.small-input .mat-mdc-select-value {
+  font-size: 14px;
+  line-height: 1.5;
+}

@@ -16,7 +16,7 @@ import { TOOL_REGISTRY, ToolEntry } from '../../core/tools/tools.registry';
     MatTooltipModule
   ],
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.css']
+  styleUrl: './sidenav.component.css'
 })
 export class SidenavComponent {
   @Input() isExpanded: boolean = false;
