@@ -8,12 +8,11 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { c } from "../../../../../node_modules/@angular/cdk/a11y-module.d-DBHGyKoh";
 
 export interface Drink {
   name: string;
-  volume: number;
-  alcoholPercentage: number;
+  volume: number | null;
+  alcoholPercentage: number | null;
   time: string;
 
   alcoholGrams: number;
@@ -70,9 +69,9 @@ export class AlcoholLevelComponent implements OnInit {
     const timeString = currentTime.toTimeString().substring(0, 5);
 
     const newDrink: Drink = {
-      name: `Getränk ${this.drinks.length + 1}`,
-      volume: 0,
-      alcoholPercentage: 0,
+      name: '',
+      volume: null as any,
+      alcoholPercentage: null as any,
       time: timeString,
       alcoholGrams: 0,
       bacIncrease: 0
@@ -84,7 +83,7 @@ export class AlcoholLevelComponent implements OnInit {
   }
 
   calculateDrink(drink: Drink) {
-    drink.alcoholGrams = drink.volume && drink.alcoholPercentage ?
+    drink.alcoholGrams = (drink.volume && drink.alcoholPercentage) ?
       (drink.volume * drink.alcoholPercentage / 100) * 0.789 : 0;
 
     if (this.weight > 0 && drink.alcoholGrams > 0) {
@@ -157,7 +156,13 @@ export class AlcoholLevelComponent implements OnInit {
         const data = JSON.parse(stored);
         this.weight = data.weight || 70;
         this.gender = data.gender || 'other';
-        this.drinks = data.drinks || [];
+        this.drinks = (data.drinks || []).map((drink: any) => ({
+          ...drink,
+          volume: drink.volume === 0 ? null : drink.volume,
+          alcoholPercentage: drink.alcoholPercentage === 0 ? null : drink.alcoholPercentage
+        }));
+
+        this.clearListIfSoberCheck();
         this.updateDataSource();
       } catch (error) {
         console.warn('Fehler beim Laden der Alkohol-Daten:', error);
@@ -170,6 +175,13 @@ export class AlcoholLevelComponent implements OnInit {
     localStorage.removeItem('alcohol-level-data');
   }
 
+  removeDrink(drink: Drink) {
+    this.drinks = this.drinks.filter(d => d !== drink);
+    this.updateDataSource();
+    this.updateCurrentBAC();
+    this.saveToStorage();
+  }
+
   resetData() {
     this.drinks = [];
     this.currentBAC = 0;
@@ -179,7 +191,9 @@ export class AlcoholLevelComponent implements OnInit {
   }
 
   isDrinkComplete(drink: Drink): boolean {
-    return !!(drink.volume > 0 && drink.alcoholPercentage > 0 && drink.time);
+    return !!(drink.volume && drink.volume > 0 && 
+              drink.alcoholPercentage && drink.alcoholPercentage > 0 && 
+              drink.time);
   }
 
   private calculateCurrentBAC(): number {
@@ -215,5 +229,9 @@ export class AlcoholLevelComponent implements OnInit {
     if (date > new Date()) date.setDate(date.getDate() - 1);
 
     return date;
+  }
+
+  private clearListIfSoberCheck() {    
+    if (this.calculateCurrentBAC() <= 0.001) this.drinks = [];
   }
 }

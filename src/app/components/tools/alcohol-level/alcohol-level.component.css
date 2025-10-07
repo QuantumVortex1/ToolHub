@@ -25,13 +25,6 @@
     gap: 8px;
 }
 
-.personal-inputs mat-form-field ::ng-deep .mat-mdc-form-field-subscript-wrapper {
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
 .drinks-table-container {
   overflow-x: auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -58,7 +51,7 @@
 }
 
 .compact-field {
-  max-width: 100px;
+  max-width: 150px;
 }
 
 .calculated-cell {
@@ -79,6 +72,28 @@
 .highlight-cell {
   font-weight: 600 !important;
   background-color: #e3f2fd !important;
+}
+
+.bac-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 52px;
+}
+
+.delete-icon {
+  cursor: pointer;
+  color: #f44336;
+  display: inline-flex;
+  width: 0;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.2s ease;
+}
+
+.table-row:hover .delete-icon {
+  width: 24px;
+  margin-left: 8px;
 }
 
 .empty-row {
@@ -110,7 +125,6 @@
   font-size: 2.5em;
   font-weight: bold;
   color: #1976d2;
-  margin-bottom: 8px;
 }
 
 .bac-value.warning {
@@ -119,25 +133,6 @@
 
 .bac-value.danger {
   color: #f44336;
-}
-
-.bac-info {
-  color: #666;
-  font-style: italic;
-  margin-bottom: 16px;
-}
-
-.reset-section {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #e0e0e0;
-}
-
-.reset-section button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
