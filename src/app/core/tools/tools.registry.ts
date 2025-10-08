@@ -39,5 +39,13 @@ export const TOOL_REGISTRY: ToolEntry[] = [
         route: '/tools/alcohol-level',
         icon: 'sports_bar',
         tags: ['alkohol', 'promille', 'blutalkoholspiegel', 'bier', 'wein', 'schnaps']
+    },
+    {
+        id: 'checkout-helper',
+        name: 'Kassen-Zählhilfe',
+        description: 'Hilft beim Auszählen der Kasse mit automatischer Berechnung für verschiedene Währungen.',
+        route: '/tools/checkout-helper',
+        icon: 'point_of_sale',
+        tags: ['kasse', 'bargeld', 'zählen', 'euro', 'abrechnung']
     }
 ];
