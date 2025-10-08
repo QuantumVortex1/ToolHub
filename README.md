@@ -1,59 +1,96 @@
+<div align="center">
+
 # ToolHub
+**Your all-in-one toolkit for everyday utilities**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+[🚀 Website](https://quantumvortex1.github.io/ToolHub/) • [🐛 Report Issues](https://github.com/QuantumVortex1/ToolHub/issues/new) • [💡 Request Features](https://github.com/QuantumVortex1/ToolHub/issues/new)
 
-## Development server
+</div>
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 📋 About
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+ToolHub is a comprehensive collection of useful tools built with modern web technologies. Whether you need to calculate pizza value ratios, estimate blood alcohol content, or count cash registers, ToolHub provides a one-stop solution for various occasional needs.
 
-## Code scaffolding
+The mission is to stop endlessly searching the web for simple tools – find everything you need in one place!
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+## 🚀 Quick Start
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- **Angular CLI** (for development commands)
+    ```bash
+    npm install -g @angular/cli
+    ```
 
-```bash
-ng generate --help
-```
+### Installation
 
-## Building
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/QuantumVortex1/ToolHub.git
+   cd ToolHub
+   ```
 
-To build the project run:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   ng serve
+   ```
+   
+4. **Open in browser**
+   Navigate to `http://localhost:4200/`
+
+**Building for Production**
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 📖 Documentation
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+### Project Structure
+```
+src/
+├── app/
+│   ├── components/        # UI Components
+│   │   ├── tools/        # Individual tool components
+│   │   ├── header/       # Navigation header
+│   │   └── footer/       # Footer with version info
+│   ├── conf/             # Configuration files
+│   │   ├── currency.config.ts    # Currency definitions
+│   │   └── version.config.ts     # Version management
+│   └── core/             # Core services and utilities
 ```
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
+## 📚 Resources
 
-```bash
-ng e2e
-```
+ - [Angular Documentation](https://angular.dev/overview) 
+ - [TypeScript Handbook](https://www.typescriptlang.org/docs/) 
+ - [Angular Material](https://material.angular.io/components/categories) 
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 📄 License
 
-## Additional Resources
+This project is open source and available under the [MIT License](LICENSE).
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 💖 Support
+<a href="https://ko-fi.com/quantumvortex1" target="_blank">
+    <img src="https://storage.ko-fi.com/cdn/kofi5.png" alt="Ko-fi" width="200" style="max-width: 100%; height: auto;">
+</a>
+
+---
+
+<div align="center">
+  
+**Made with ❤️ by [QuantumVortex1](https://github.com/QuantumVortex1)**
+
+⭐ **Star this repo if you find it helpful!** ⭐
+
+</div>
