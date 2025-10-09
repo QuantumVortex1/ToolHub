@@ -187,6 +187,11 @@
     </div>
 
     <div class="actions">
+      <button mat-raised-button color="primary" (click)="exportToPDF()" class="export-button">
+        <mat-icon>picture_as_pdf</mat-icon>
+        Als PDF speichern
+      </button>
+      
       <button mat-stroked-button color="warn" (click)="resetData()">
         <mat-icon>refresh</mat-icon>
         Zurücksetzen

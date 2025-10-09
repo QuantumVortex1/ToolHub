@@ -288,6 +288,29 @@
   }
 }
 
+.actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.export-button {
+  min-width: 140px;
+}
+
+@media (max-width: 768px) {
+  .actions {
+    justify-content: stretch;
+  }
+  
+  .actions button {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 480px) {
   .cash-table th:first-child {
     width: 50%;
@@ -299,5 +322,13 @@
   
   .cash-table th:last-child {
     width: 20%;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .actions button {
+    width: 100%;
   }
 }
