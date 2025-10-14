@@ -4,6 +4,8 @@
     height: 60px;
     background-color: #ffffff;
     border-bottom: 2px solid #1976d2;
+    position: relative;
+    z-index: 1000;
 }
 
 :host ::ng-deep .mdc-text-field--outlined {
@@ -42,6 +44,10 @@
     max-width: 450px;
 }
 
+.desktop-search {
+    display: flex;
+}
+
 .search-form {
     width: 100%;
 }
@@ -75,8 +81,78 @@
 .right-section {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
     flex: 1;
     min-width: 0;
+}
+
+.mobile-search-button {
+    display: none;
+}
+
+.mobile-search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-search-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-search-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-search-overlay.open .mobile-search-container {
+    transform: translateY(0);
+}
+
+.mobile-search-form {
+    padding: 16px;
+}
+
+.mobile-search-field {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .desktop-search {
+        display: none;
+    }
+    
+    .mobile-search-button {
+        display: inline-flex;
+    }
+    
+    .title {
+        font-size: 16px;
+    }
+    
+    .header-container {
+        padding: 0 4px;
+        gap: 8px;
+    }
+    
+    .left-section {
+        gap: 8px;
+    }
 }
 
 p {

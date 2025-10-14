@@ -20,6 +20,12 @@
     gap: 24px;
 }
 
+.personal-values span {
+    font-weight: 500;
+    color: #1976d2;
+    white-space: nowrap;
+}
+
 .personal-inputs {
     display: flex;
     gap: 8px;
@@ -135,6 +141,10 @@
   color: #f44336;
 }
 
+input[type="time"] {
+    min-width: 120px;
+}
+
 @media (max-width: 768px) {
   .drinks-table-container {
     font-size: 12px;
@@ -149,12 +159,28 @@
     padding: 8px 4px;
   }
   
+  .personal-values {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
   .personal-inputs {
     flex-direction: column;
     gap: 16px;
+    width: 100%;
+  }
+  
+  .personal-field {
+    width: 100%;
   }
   
   .bac-value {
     font-size: 2em;
+  }
+  
+  input[type="time"] {
+    min-width: 140px;
+    font-size: 16px;
   }
 }

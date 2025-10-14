@@ -30,8 +30,10 @@ export class HeaderComponent {
 
   @Output() toggleSidenav = new EventEmitter<void>();
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('mobileSearchInput') mobileSearchInput!: ElementRef<HTMLInputElement>;
 
   searchControl = new FormControl<SearchResult | null>(null);
+  mobileSearchOpen = false;
 
   suggestions: SearchResult[] = [];
 
@@ -71,5 +73,20 @@ export class HeaderComponent {
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
+  }
+
+  toggleMobileSearch(): void {
+    this.mobileSearchOpen = !this.mobileSearchOpen;
+    if (this.mobileSearchOpen) {
+      setTimeout(() => {
+        if (this.mobileSearchInput) {
+          this.mobileSearchInput.nativeElement.focus();
+        }
+      }, 100);
+    }
+  }
+
+  closeMobileSearch(): void {
+    this.mobileSearchOpen = false;
   }
 }

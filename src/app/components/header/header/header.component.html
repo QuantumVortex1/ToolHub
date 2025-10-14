@@ -6,7 +6,7 @@
     <span class="title">ToolHub</span>
   </div>
 
-  <div class="center-section">
+  <div class="center-section desktop-search">
     <form class="search-form">
       <mat-form-field appearance="outline" class="search-field small-input">
         <mat-label>
@@ -25,8 +25,33 @@
   </div>
 
   <div class="right-section">
+    <button mat-icon-button class="mobile-search-button" aria-label="Suche öffnen" (click)="toggleMobileSearch()">
+      <mat-icon>search</mat-icon>
+    </button>
+    
     <button mat-icon-button aria-label="Favoriten" matTooltip="Dieses Feature wird bald verfügbar sein!">
       <mat-icon>star_outline</mat-icon>
     </button>
   </div>
 </header>
+
+<div class="mobile-search-overlay" [class.open]="mobileSearchOpen" (click)="closeMobileSearch()">
+  <div class="mobile-search-container" (click)="$event.stopPropagation()">
+    <form class="mobile-search-form">
+      <mat-form-field appearance="outline" class="mobile-search-field small-input">
+        <mat-label>Wert eingeben oder Werkzeug suchen</mat-label>
+        <input #mobileSearchInput matInput type="text" [formControl]="searchControl" [matAutocomplete]="autoMobile"/>
+        <button matSuffix mat-icon-button (click)="closeMobileSearch()" type="button">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-autocomplete #autoMobile="matAutocomplete" [displayWith]="displayFn">
+          @for (option of suggestions; track option.route) {
+            <mat-option [value]="option.route" [matTooltip]="option.display" (onSelectionChange)="navigateTo(option.route); closeMobileSearch()">
+              {{ option.display }}
+            </mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+</div>

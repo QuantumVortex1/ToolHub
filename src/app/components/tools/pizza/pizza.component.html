@@ -8,7 +8,7 @@
     </mat-form-field>
     
     <div class="toggle-section">
-      <mat-button-toggle-group [(ngModel)]="showAreaPerEuro" appearance="standard">
+      <mat-button-toggle-group [(ngModel)]="showAreaPerEuro" appearance="standard" hideSingleSelectionIndicator="true">
         <mat-button-toggle [value]="false">Preis pro Fläche (€/cm²)</mat-button-toggle>
         <mat-button-toggle [value]="true">Fläche pro Euro (cm²/€)</mat-button-toggle>
       </mat-button-toggle-group>

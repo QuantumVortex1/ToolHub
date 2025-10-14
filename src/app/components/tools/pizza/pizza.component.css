@@ -8,6 +8,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
+  flex-wrap: wrap;
 }
 
 .crust-settings mat-form-field ::ng-deep .mat-mdc-form-field-subscript-wrapper {
@@ -22,12 +23,14 @@
   flex-direction: column;
   gap: 8px;
   align-items: flex-end;
+  flex-shrink: 0;
 }
 
 .toggle-section mat-button-toggle-group {
   height: 40px;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  max-width: 100%;
 }
 
 .toggle-section mat-button-toggle {
@@ -39,6 +42,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 0;
+  flex: 1;
 }
 
 .toggle-section mat-button-toggle ::ng-deep .mat-button-toggle-label-content {
@@ -46,6 +51,10 @@
   display: flex;
   align-items: center;
   font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pizza-table-container {
@@ -158,5 +167,34 @@
   .pizza-table th,
   .pizza-table td {
     padding: 8px 4px;
+  }
+  
+  .crust-settings {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  
+  .toggle-section {
+    align-items: stretch;
+    width: 100%;
+  }
+  
+  .toggle-section mat-button-toggle-group {
+    width: 100%;
+  }
+  
+  .toggle-section mat-button-toggle {
+    font-size: 10px;
+    padding: 0 6px;
+    height: 28px;
+  }
+  
+  .toggle-section mat-button-toggle ::ng-deep .mat-button-toggle-label-content {
+    font-size: 10px;
+  }
+  
+  .toggle-section mat-button-toggle-group {
+    height: 28px;
   }
 }
