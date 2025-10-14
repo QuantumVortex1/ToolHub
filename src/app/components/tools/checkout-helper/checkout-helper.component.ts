@@ -140,11 +140,11 @@ export class CheckoutHelperComponent implements OnInit {
       startingCash: this.checkoutData.startingCash,
       pdfTitle: this.checkoutData.pdfTitle
     };
-    localStorage.setItem('checkout-helper-data', JSON.stringify(data));
+    sessionStorage.setItem('checkout-helper-data', JSON.stringify(data));
   }
 
   private loadFromStorage() {
-    const stored = localStorage.getItem('checkout-helper-data');
+    const stored = sessionStorage.getItem('checkout-helper-data');
     if (stored) {
       try {
         const data = JSON.parse(stored);
@@ -174,7 +174,7 @@ export class CheckoutHelperComponent implements OnInit {
     }
   }
 
-  private clearStorage() { localStorage.removeItem('checkout-helper-data'); }
+  private clearStorage() { sessionStorage.removeItem('checkout-helper-data'); }
 
   exportToPDF() {
     const dialogRef = this.dialog.open(PdfTitleDialogComponent, {

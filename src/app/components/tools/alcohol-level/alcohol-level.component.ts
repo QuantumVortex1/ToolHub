@@ -146,11 +146,11 @@ export class AlcoholLevelComponent implements OnInit {
       gender: this.gender,
       drinks: this.drinks
     };
-    localStorage.setItem('alcohol-level-data', JSON.stringify(data));
+    sessionStorage.setItem('alcohol-level-data', JSON.stringify(data));
   }
 
   private loadFromStorage() {
-    const stored = localStorage.getItem('alcohol-level-data');
+    const stored = sessionStorage.getItem('alcohol-level-data');
     if (stored) {
       try {
         const data = JSON.parse(stored);
@@ -172,7 +172,7 @@ export class AlcoholLevelComponent implements OnInit {
   }
 
   private clearStorage() {
-    localStorage.removeItem('alcohol-level-data');
+    sessionStorage.removeItem('alcohol-level-data');
   }
 
   removeDrink(drink: Drink) {
