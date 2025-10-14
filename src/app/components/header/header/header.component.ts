@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild, ElementRef, HostListener, Output, EventEmitter } from '@angular/core';
+import { Component, inject, ViewChild, ElementRef, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SearchService, SearchResult } from '../../../core/search/search.service';
@@ -8,6 +8,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FavoritesService } from '../../../core/favorites/favorites.service';
 
 @Component({
   selector: 'app-header',
@@ -19,13 +21,17 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     MatTooltipModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    CommonModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
-  constructor(private searchService: SearchService) { }
+export class HeaderComponent implements OnInit {
+  constructor(
+    private searchService: SearchService,
+    private favoritesService: FavoritesService
+  ) { }
   private router = inject(Router);
 
   @Output() toggleSidenav = new EventEmitter<void>();
@@ -34,6 +40,8 @@ export class HeaderComponent {
 
   searchControl = new FormControl<SearchResult | null>(null);
   mobileSearchOpen = false;
+  currentRoute: string = '';
+  isCurrentToolFavorite = false;
 
   suggestions: SearchResult[] = [];
 
@@ -61,6 +69,16 @@ export class HeaderComponent {
         this.search(value);
       }
     });
+
+    this.router.events.subscribe(() => {
+      this.updateCurrentRoute();
+    });
+    this.updateCurrentRoute();
+  }
+
+  private updateCurrentRoute(): void {
+    this.currentRoute = this.router.url;
+    this.isCurrentToolFavorite = this.favoritesService.isFavorite(this.currentRoute);
   }
 
   search(query: string): void {
@@ -88,5 +106,16 @@ export class HeaderComponent {
 
   closeMobileSearch(): void {
     this.mobileSearchOpen = false;
+  }
+
+  toggleCurrentToolFavorite(): void {
+    if (this.currentRoute && this.currentRoute !== '/') {
+      const wasAdded = this.favoritesService.toggleFavorite(this.currentRoute);
+      this.isCurrentToolFavorite = wasAdded;
+    }
+  }
+
+  showTooltip(): boolean {
+    return !!this.currentRoute && this.currentRoute !== '/';
   }
 }

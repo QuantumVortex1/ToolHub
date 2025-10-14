@@ -26,6 +26,7 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .tool-card:hover {
@@ -93,6 +94,27 @@
 .no-favorites p {
   margin: 0;
   font-size: 16px;
+}
+
+.remove-favorite-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #ff9800;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.remove-favorite-btn:hover {
+  opacity: 1;
+  color: #f57c00;
+  transform: scale(1.1);
+}
+
+.remove-favorite-btn mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 @media (max-width: 1024px) {

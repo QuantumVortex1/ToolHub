@@ -7,6 +7,16 @@ export interface ToolEntry {
     icon: string;
     }
 
+export function getToolByRoute(route: string): ToolEntry | undefined {
+    return TOOL_REGISTRY.find(tool => tool.route === route);
+}
+
+export function getFavorites(favoriteRoutes: string[]): ToolEntry[] {
+    return favoriteRoutes
+        .map(route => getToolByRoute(route))
+        .filter(tool => tool !== undefined) as ToolEntry[];
+}
+
 export const TOOL_REGISTRY: ToolEntry[] = [
     {
         id: 'home',

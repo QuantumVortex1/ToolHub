@@ -12,12 +12,20 @@
                     <h4 class="tool-card-title">{{ tool.name }}</h4>
                     <p class="tool-card-description">{{ tool.description }}</p>
                 </div>
+                <button 
+                    mat-icon-button 
+                    class="remove-favorite-btn"
+                    aria-label="Aus Favoriten entfernen"
+                    matTooltip="Aus Favoriten entfernen"
+                    (click)="removeFavorite(tool, $event)">
+                    <mat-icon>star</mat-icon>
+                </button>
             </div>
         </div>
         <ng-template #noFavorites>
             <div class="no-favorites">
                 <mat-icon class="no-favorites-icon">star_outline</mat-icon>
-                <p>Stay tuned for updates!</p>
+                <p>Noch keine Favoriten vorhanden</p>
             </div>
         </ng-template>
     </section>

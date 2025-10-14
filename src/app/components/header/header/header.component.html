@@ -29,8 +29,15 @@
       <mat-icon>search</mat-icon>
     </button>
     
-    <button mat-icon-button aria-label="Favoriten" matTooltip="Dieses Feature wird bald verfügbar sein!">
-      <mat-icon>star_outline</mat-icon>
+    <button
+      mat-icon-button 
+      class="favorite-button"
+      [class.is-favorite]="isCurrentToolFavorite"
+      aria-label="Favorit" 
+      *ngIf="showTooltip()"
+      [matTooltip]="this.isCurrentToolFavorite ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'"
+      (click)="toggleCurrentToolFavorite()">
+      <mat-icon>{{ isCurrentToolFavorite ? 'star' : 'star_outline' }}</mat-icon>
     </button>
   </div>
 </header>
