@@ -57,5 +57,13 @@ export const TOOL_REGISTRY: ToolEntry[] = [
         route: '/tools/checkout-helper',
         icon: 'point_of_sale',
         tags: ['kasse', 'bargeld', 'zählen', 'euro', 'abrechnung']
+    },
+    {
+        id: 'expenses-splitter',
+        name: 'Ausgabenaufteilung',
+        description: 'Teilt Ausgaben in Gruppen gerecht auf und berechnet, wer wem wie viel schuldet.',
+        route: '/tools/expenses-splitter',
+        icon: 'currency_exchange',
+        tags: ['ausgaben', 'aufteilung', 'budget', 'kosten', 'teilen']
     }
 ];

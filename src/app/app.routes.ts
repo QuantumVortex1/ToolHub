@@ -4,6 +4,7 @@ import { PizzaComponent } from './components/tools/pizza/pizza.component';
 import { ConverterComponent } from './components/tools/converter/converter.component';
 import { AlcoholLevelComponent } from './components/tools/alcohol-level/alcohol-level.component';
 import { CheckoutHelperComponent } from './components/tools/checkout-helper/checkout-helper.component';
+import { ExpensesSplitterComponent } from './components/tools/expenses-splitter/expenses-splitter.component';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },
@@ -11,5 +12,6 @@ export const routes: Routes = [
     { path: 'tools/pizza', component: PizzaComponent },
     { path: 'tools/alcohol-level', component: AlcoholLevelComponent },
     { path: 'tools/checkout-helper', component: CheckoutHelperComponent },
+    { path: 'tools/expenses-splitter', component: ExpensesSplitterComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
