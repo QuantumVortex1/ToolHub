@@ -25,6 +25,7 @@
 
 .compact-field {
   max-width: 150px;
+  min-width: 80px;
 }
 
 .calculated-cell {
@@ -113,7 +114,24 @@
   }
   
   .compact-field {
+    max-width: 85px;
+    min-width: 70px;
+  }
+  
+  .people-table mat-form-field {
+    font-size: 12px;
+  }
+  
+  .people-table td:first-child,
+  .people-table th:first-child {
     max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .people-table td:first-child mat-form-field {
+    max-width: 90px;
   }
   
   .actions {
@@ -123,11 +141,51 @@
   .actions button {
     width: 100%;
   }
+  
+  .calculated-cell {
+    padding-right: 8px !important;
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 480px) {
+  .people-table {
+    font-size: 11px;
+  }
+  
   .people-table th,
   .people-table td {
     padding: 4px 2px;
+  }
+  
+  .compact-field {
+    max-width: 70px;
+    min-width: 60px;
+  }
+  
+  .people-table mat-form-field {
+    font-size: 11px;
+  }
+  
+  .people-table td:first-child,
+  .people-table th:first-child {
+    max-width: 80px;
+    font-size: 10px;
+  }
+  
+  .people-table td:first-child mat-form-field {
+    max-width: 75px;
+  }
+  
+  .calculated-cell {
+    font-size: 10px;
+  }
+  
+  .actions-cell {
+    width: 40px;
+  }
+  
+  .actions-cell button {
+    transform: scale(0.9);
   }
 }
