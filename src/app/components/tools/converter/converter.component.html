@@ -1,1 +1,27 @@
-<p>converter works!</p>
+<div class="converter-tabs" *ngIf="!isOverviewRoute">
+  <button *ngFor="let converter of converters" class="tab-button" [class.active]="isActive(converter)"
+    (click)="selectConverter(converter)">
+    <mat-icon class="material-symbols-outlined tab-icon">{{ converter.icon }}</mat-icon>
+    <span class="tab-label">{{ converter.short }}</span>
+  </button>
+</div>
+
+<div class="component-wrapper" *ngIf="isOverviewRoute">
+  <h2>Einheiten-Konverter</h2>
+  <p class="overview-description"> Wähle einen Konverter aus, um Einheiten umzurechnen.</p>
+
+  <div class="converter-cards">
+    <div *ngFor="let converter of converters" class="converter-card" (click)="selectConverter(converter)">
+      <div class="card-icon">
+        <mat-icon class="material-symbols-outlined">{{ converter.icon }}</mat-icon>
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">{{ converter.name }}</h3>
+        <p class="card-description">{{ converter.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-length-converter *ngIf="activeConverter?.id === 'length-converter'"></app-length-converter>
+<app-temperature-converter *ngIf="activeConverter?.id === 'temperature-converter'"></app-temperature-converter>

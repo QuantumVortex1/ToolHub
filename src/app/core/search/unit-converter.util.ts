@@ -1,11 +1,11 @@
-import { CONVERSION_SUGGESTIONS } from "../../conf/conversion-suggestions.config";
+import { CONVERTERS_REGISTRY } from "../../components/tools/converter/converters.registry";
 
 export function convert(value: number, fromUnit: string, toUnit: string){
-    const unitGroup = CONVERSION_SUGGESTIONS.find(group => group.units.some(u => u.unit === fromUnit));
-    if (!unitGroup) return null;
+    const converter = CONVERTERS_REGISTRY.find(c => c.units.some(u => u.unit === fromUnit));
+    if (!converter) return null;
 
-    const fromDef = unitGroup.units.find(u => u.unit === fromUnit);
-    const toDef = unitGroup.units.find(u => u.unit === toUnit);
+    const fromDef = converter.units.find(u => u.unit === fromUnit);
+    const toDef = converter.units.find(u => u.unit === toUnit);
 
     if (!fromDef || !toDef) return null;
 
@@ -14,20 +14,20 @@ export function convert(value: number, fromUnit: string, toUnit: string){
 }
 
 export function convertSuggestions(value: number, unit: string): {type: string, display: string, route: string}[] {
-    const unitGroup = CONVERSION_SUGGESTIONS.find(group => group.units.some(u => u.unit === unit));
-    if (!unitGroup) return [];
+    const converter = CONVERTERS_REGISTRY.find(c => c.units.some(u => u.unit === unit));
+    if (!converter) return [];
 
-    const fromDef = unitGroup.units.find(u => u.unit === unit);
+    const fromDef = converter.units.find(u => u.unit === unit);
     if (!fromDef) return [];
 
     const baseValue = fromDef.toBase(value);
 
-    const results = unitGroup.units
+    const results = converter.units
         .filter(u => u.unit !== unit)
         .map(u => ({
             type: 'conversion',
-            display: u.fromBase(baseValue).toString() + ' ' + u.symbol,
-            route: `/converter?value=${value}&from=${unit}&to=${u.unit}`
+            display: `${u.fromBase(baseValue).toString()} ${u.symbol}`,
+            route: converter.route
         }));
 
     return results;

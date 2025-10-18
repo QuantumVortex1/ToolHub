@@ -8,7 +8,8 @@ import { ExpensesSplitterComponent } from './components/tools/expenses-splitter/
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },
-    // { path: 'tools/converter', component: ConverterComponent },
+    { path: 'tools/converter', component: ConverterComponent },
+    { path: 'tools/converter/:type', component: ConverterComponent },
     { path: 'tools/pizza', component: PizzaComponent },
     { path: 'tools/alcohol-level', component: AlcoholLevelComponent },
     { path: 'tools/checkout-helper', component: CheckoutHelperComponent },

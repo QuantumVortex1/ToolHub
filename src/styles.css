@@ -1,8 +1,15 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .component-wrapper {
-    padding: 20px;
+  padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -20,16 +27,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /*  */
 
 .info-box {
-    display: flex;
-    align-items: center;
-    background-color: #e3f2fd;
-    border: 1px solid #90caf9;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  background-color: #e3f2fd;
+  border: 1px solid #90caf9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
 
-    a {
-        color: #1976d2;
-        text-decoration: none;
-    }
+  a {
+    color: #1976d2;
+    text-decoration: none;
+  }
 }

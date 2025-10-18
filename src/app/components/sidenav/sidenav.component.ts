@@ -27,7 +27,9 @@ export class SidenavComponent {
 
   constructor(private router: Router) {
     this.router.events.subscribe(() => {
-      this.activeRoute = this.router.url;
+      const url = this.router.url;
+      if (url.startsWith('/tools/converter/')) this.activeRoute = '/tools/converter';
+      else this.activeRoute = url;
     });
   }
 
