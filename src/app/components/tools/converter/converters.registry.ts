@@ -7,8 +7,8 @@ import { VOLUME_CONVERTER } from './converters/volume-converter/volume.converter
 export const CONVERTERS_REGISTRY: ConverterDefinition[] = [
   LENGTH_CONVERTER,
   TEMPERATURE_CONVERTER,
-  // WEIGHT_CONVERTER,
-  // VOLUME_CONVERTER
+  WEIGHT_CONVERTER,
+  VOLUME_CONVERTER
 ];
 
 export function getConverterByRoute(route: string): ConverterDefinition | undefined {

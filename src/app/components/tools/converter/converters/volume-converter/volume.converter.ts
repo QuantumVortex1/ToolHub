@@ -46,6 +46,20 @@ export const VOLUME_CONVERTER: ConverterDefinition = {
       fromBase: (value: number) => value / 1000
     },
     {
+      unit: 'ft3',
+      unitName: 'Kubikfuß',
+      symbol: 'ft³',
+      toBase: (value: number) => value * 28.3168,
+      fromBase: (value: number) => value / 28.3168
+    },
+    {
+      unit: 'in3',
+      unitName: 'Kubikzoll',
+      symbol: 'in³',
+      toBase: (value: number) => value * 0.0163871,
+      fromBase: (value: number) => value / 0.0163871
+    },
+    {
       unit: 'gal',
       unitName: 'US-Gallone(n)',
       symbol: 'gal (US)',

@@ -1,1 +1,51 @@
-<p>volume-converter works!</p>
+<div class="component-wrapper">
+  <h2>{{ converter.name }}</h2>
+
+  <div class="unit-section">
+    <div class="unit-cards-grid">
+      <div *ngFor="let card of metricUnits" class="unit-card" [class.highlight]="isHighlighted(card)">
+        <div class="unit-card-header">
+          <span class="unit-label">{{ card.unit.unitName }}</span>
+        </div>
+        <div class="unit-card-input">
+          <mat-form-field appearance="outline" class="unit-input-field">
+            <input matInput type="number" [(ngModel)]="card.value" (ngModelChange)="onInputChange(card)"
+              [placeholder]="'0'" step="any" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit-section">
+    <div class="unit-cards-grid">
+      <div *ngFor="let card of imperialUnits" class="unit-card" [class.highlight]="isHighlighted(card)">
+        <div class="unit-card-header">
+          <span class="unit-label">{{ card.unit.unitName }}</span>
+        </div>
+        <div class="unit-card-input">
+          <mat-form-field appearance="outline" class="unit-input-field">
+            <input matInput type="number" [(ngModel)]="card.value" (ngModelChange)="onInputChange(card)"
+              [placeholder]="'0'" step="any" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit-section">
+    <div class="unit-cards-grid">
+      <div *ngFor="let card of otherUnits" class="unit-card" [class.highlight]="isHighlighted(card)">
+        <div class="unit-card-header">
+          <span class="unit-label">{{ card.unit.unitName }}</span>
+        </div>
+        <div class="unit-card-input">
+          <mat-form-field appearance="outline" class="unit-input-field">
+            <input matInput type="number" [(ngModel)]="card.value" (ngModelChange)="onInputChange(card)"
+              [placeholder]="'0'" step="any" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

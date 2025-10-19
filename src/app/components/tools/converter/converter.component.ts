@@ -3,18 +3,23 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CONVERTERS_REGISTRY, getConverterByRoute } from './converters.registry';
 import { ConverterDefinition } from './converter-types';
+import { MatIconModule } from '@angular/material/icon';
+
 import { LengthConverterComponent } from './converters/length-converter/length-converter.component';
 import { TemperatureConverterComponent } from './converters/temperature-converter/temperature-converter.component';
-import { MatIconModule } from '@angular/material/icon';
+import { WeightConverterComponent } from './converters/weight-converter/weight-converter.component';
+import { VolumeConverterComponent } from './converters/volume-converter/volume-converter.component';
 
 @Component({
   selector: 'app-converter',
   imports: [
     CommonModule, 
     RouterModule, 
+    MatIconModule,
     LengthConverterComponent,
     TemperatureConverterComponent,
-    MatIconModule
+    WeightConverterComponent,
+    VolumeConverterComponent
   ],
   templateUrl: './converter.component.html',
   styleUrl: './converter.component.css'
