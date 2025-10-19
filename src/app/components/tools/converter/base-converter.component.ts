@@ -1,7 +1,7 @@
 import { OnInit, Directive } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConverterDefinition, UnitDefinition } from '../converter-types';
+import { ConverterDefinition, UnitDefinition } from './converter-types';
 
 export interface UnitCard {
   unit: UnitDefinition;

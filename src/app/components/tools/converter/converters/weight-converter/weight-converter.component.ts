@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { BaseConverterComponent } from '../../services/base-converter.component';
+import { BaseConverterComponent } from '../../base-converter.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WEIGHT_CONVERTER } from './weight.converter';
 import { MatFormFieldModule } from '@angular/material/form-field';

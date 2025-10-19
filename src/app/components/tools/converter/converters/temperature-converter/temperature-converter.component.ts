@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TEMPERATURE_CONVERTER } from './temperature.converter';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { BaseConverterComponent } from '../../services/base-converter.component';
+import { BaseConverterComponent } from '../../base-converter.component';
 
 @Component({
   selector: 'app-temperature-converter',

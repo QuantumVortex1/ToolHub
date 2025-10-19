@@ -7,7 +7,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { BaseConverterComponent } from '../../services/base-converter.component';
+import { BaseConverterComponent } from '../../base-converter.component';
 
 @Component({
   selector: 'app-length-converter',
